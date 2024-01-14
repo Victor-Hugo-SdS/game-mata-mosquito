@@ -1,6 +1,7 @@
 let altura = 0
 let largura = 0
 let vidas = 1
+let tempo = 5
 
 function ajustaTela() {
     altura = window.innerHeight
@@ -9,6 +10,18 @@ function ajustaTela() {
     console.log(largura, altura)
 }
 ajustaTela()
+
+let cronometro = setInterval( function() {
+    tempo -= 1
+    if (tempo < 0) {
+        clearInterval(cronometro)
+        clearInterval(criaMosquito)
+        alert('vitoria')            
+    } else {
+        document.getElementById('cronometro').innerHTML = tempo
+    }
+
+}, 1000)
 
 function posicaoRandomica() {
     if (document.getElementById('mosquito')) {
